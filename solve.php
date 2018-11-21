@@ -7,20 +7,40 @@
  */
 
 define('__ROOT__', dirname(__FILE__ ). '/src');
-require_once(__ROOT__.'/TabFileReader.php');
 require_once(__ROOT__.'/City.php');
+require_once(__ROOT__.'/GeoDataSource.php');
+
+require_once(__ROOT__ . '/CityInputInterface.php');
+require_once(__ROOT__ . '/TabFileCityInput.php');
+
+require_once(__ROOT__ . '/AlgorithmInterface.php');
+require_once(__ROOT__ . '/BruteforceAlgorithm.php');
+
+require_once(__ROOT__ . '/TravelMan.php');
+
+
 
 $start = microtime(true);
+print_r("Travelling Salesman Problem: starting\n");
 
-$tabFileReader = new TabFileReader("cities.txt");
-$data = $tabFileReader->get();
-foreach ($data as $dataRow) {
-    $cities[] = new City($dataRow[0],$dataRow[1],$dataRow[2]);
+
+try {
+    $tabFileReader = new TabFileCityInput("cities.txt");
+
+    print_r("Travelling Salesman Problem: opening cities.txt file\n");
+    print_r("Travelling Salesman Problem: calculating the shortest route. This could take some minutes...\n");
+
+    $algorithm = new BruteforceAlgorithm();
+    $travelman = new TravelMan($tabFileReader, $algorithm);
+    $solution = $travelman->solve();
+    $travelman->printResults($solution);
+
+} catch (Exception $e) {
+    print_r("Travelling Salesman Problem: " . $e->getMessage() . "\n\n");
 }
-print_r($cities);
 
 
 
 
 $time_elapsed_secs = microtime(true) - $start;
-print_r("Time elapsed : $time_elapsed_secs secs\n");
+print_r("Travelling Salesman Problem: Time elapsed : $time_elapsed_secs secs\n");

@@ -36,6 +36,16 @@ class GeoDataSource
     /*::         GeoDataSource.com (C) All Rights Reserved 2018                  :*/
     /*::                                                                         :*/
     /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+
+
+    /**
+     * @param $lat1
+     * @param $lon1
+     * @param $lat2
+     * @param $lon2
+     * @param $unit
+     * @return float|int
+     */
     function distance($lat1, $lon1, $lat2, $lon2, $unit) {
 
         if (($lat1 == $lat2) && ($lon1 == $lon2)) {
@@ -56,6 +66,25 @@ class GeoDataSource
                 return $miles;
             }
         }
+    }
+
+    /**
+     * @param City $city1
+     * @param City $city2
+     * @return float|int
+     */
+    function calculateDistanceCities(City $city1, City $city2) {
+
+        return $this->distance(
+            $city1->getLatitude(),$city1->getLongitude(),
+            $city2->getLatitude(),$city2->getLongitude(),
+            'K'
+        );
+    }
+
+    function prettyPrintDistance(City $city1, City $city2) {
+        return "Distance from ". $city1->getName() ." to " . $city2->getName() . " " .
+            $this->calculateDistanceCities($city1, $city2) . "KM\n\n";
     }
 
 }
