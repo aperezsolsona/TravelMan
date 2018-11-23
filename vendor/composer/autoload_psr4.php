@@ -8,6 +8,11 @@ $baseDir = dirname($vendorDir);
 return array(
     'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/type-resolver/src', $vendorDir . '/phpdocumentor/reflection-docblock/src'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
+    'TravelMan\\Test\\' => array($baseDir . '/test'),
+    'TravelMan\\' => array($baseDir . '/src'),
+    'Graphp\\Algorithms\\' => array($vendorDir . '/graphp/algorithms/src'),
+    'Gen\\' => array($baseDir . '/tsp-genetic-algorithm-master/src'),
+    'Fhaculty\\Graph\\' => array($vendorDir . '/clue/graph/src'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
 );

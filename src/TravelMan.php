@@ -6,24 +6,32 @@
  * Time: 16:47
  */
 
+namespace TravelMan;
+
+use TravelMan\Algorithm\AlgorithmInterface;
+use TravelMan\DTO\CityDTO;
+
 class TravelMan
 {
     private $inputInterface;
     private $algorithmInterface;
+    private $verbose = false;
 
     /**
      * TravelMan constructor.
      * @param CityInputInterface $inputInterface
      * @param AlgorithmInterface $algorithmInterface
+     * @param bool $verbose
      */
-    public function __construct($inputInterface, $algorithmInterface)
+    public function __construct($inputInterface, $algorithmInterface, $verbose = false)
     {
         $this->inputInterface = $inputInterface;
         $this->algorithmInterface = $algorithmInterface;
+        $this->verbose = $verbose;
     }
 
     /**
-     * @return City[]
+     * @return CityDTO[]
      */
     public function solve() {
         $cities = $this->inputInterface->getCities();
@@ -33,11 +41,11 @@ class TravelMan
     }
 
     /**
-     * @param City[] $shortestPath
+     * @param CityDTO[] $shortestPath
      */
     public function printResults($shortestPath)
     {
-        print_r("Travelling Salesman Problem: \n");
+        if ($this->verbose) print_r("Travelling Salesman Problem: \n");
         foreach($shortestPath as $city) {
             print_r($city->getName()."\n");
         }

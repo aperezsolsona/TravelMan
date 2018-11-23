@@ -5,6 +5,9 @@
  * Date: 20/11/18
  * Time: 9:41
  */
+namespace TravelMan;
+
+use TravelMan\DTO\CityDTO;
 
 class TabFileCityInput implements CityInputInterface
 {
@@ -18,13 +21,13 @@ class TabFileCityInput implements CityInputInterface
      * @param string $file_name
      * @param string $delimiter
      * @param int $length
-     * @throws Exception
+     * @throws \Exception
      */
     public function __construct($file_name, $delimiter="\t", $length=8000)
     {
         ini_set('auto_detect_line_endings',TRUE); //mac line issues
         if (!file_exists($file_name)) {
-            throw new Exception("File not found");
+            throw new \Exception("File not found");
         }
         $this->fp = fopen($file_name, "r");
         $this->delimiter = $delimiter;
@@ -57,8 +60,8 @@ class TabFileCityInput implements CityInputInterface
     }
 
     /**
-     * @return City[]
-     * @throws Exception
+     * @return CityDTO[]
+     * @throws \Exception
      */
     public function getCities()
     {
@@ -72,9 +75,9 @@ class TabFileCityInput implements CityInputInterface
                 !is_float((float) $dataRow[1]) ||
                 !is_float((float) $dataRow[2])
             ) {
-                throw new Exception('Badly formatted file');
+                throw new \Exception('Badly formatted file');
             }
-            $cities[$dataRow[0]] = new City($dataRow[0],$dataRow[1],$dataRow[2]);
+            $cities[$dataRow[0]] = new CityDTO($dataRow[0],$dataRow[1],$dataRow[2]);
         }
         return $cities;
     }

@@ -1,17 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: slimbook
- * Date: 20/11/18
- * Time: 9:41
- */
-
+namespace TravelMan\Test;
 
 use PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStream;
+use TravelMan\TabFileCityInput;
 
-define('__SRCROOT__', dirname(dirname(__FILE__ )). '/src');
-require_once(__SRCROOT__ . '/City.php');
 
 class TabFileCityInputTest extends TestCase
 {
