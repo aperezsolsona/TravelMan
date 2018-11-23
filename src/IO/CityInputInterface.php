@@ -5,7 +5,7 @@
  * Date: 20/11/18
  * Time: 12:11
  */
-namespace TravelMan;
+namespace TravelMan\IO;
 
 use TravelMan\DTO\CityDTO;
 

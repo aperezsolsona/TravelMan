@@ -3,12 +3,19 @@ namespace TravelMan\Test;
 
 use PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStream;
-use TravelMan\TabFileCityInput;
+use TravelMan\DTO\CityDTO;
+use TravelMan\IO\TabFileCityInput;
 
 
 class TabFileCityInputTest extends TestCase
 {
 
+    /**
+     *
+     * Setting up a virtual filesystem for testing purposes with vfsStream library
+     *
+     *
+     */
     public function setUp()
     {
         // define a virtual file system
@@ -24,7 +31,7 @@ class TabFileCityInputTest extends TestCase
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException \Exception
      */
     public function testFileNotFoundExceptionIsThrownWhenNoFile()
     {
@@ -33,7 +40,7 @@ class TabFileCityInputTest extends TestCase
     }
 
     /**
-     * @expectedException Exception
+     * @expectedException \Exception
      */
     public function testInvalidTabFile()
     {
@@ -43,17 +50,19 @@ class TabFileCityInputTest extends TestCase
     }
 
 
-
+    /**
+     * the file contains well formatted tab content -> process
+     * @throws \Exception
+     */
     public function testHasKeyInFile()
     {
-        // the file contains badly formatted tab content -> Exception
         $filereader = new TabFileCityInput($this->file_system->url() . '/validcities.txt');
         $cities = $filereader->getCities();
         $this->assertArrayHasKey('Beijing', $cities);
         $this->assertArrayHasKey('Dakar', $cities);
         $this->assertArrayHasKey('Barcelona', $cities);
         $this->assertArrayHasKey('Tokyo', $cities);
-        $this->assertInstanceOf(City::class, $cities['Beijing']);
+        $this->assertInstanceOf(CityDTO::class, $cities['Beijing']);
         $city = $cities['Beijing'];
         $this->assertEquals('Beijing', $city->getName());
         $this->assertEquals(12, $city->getLatitude());

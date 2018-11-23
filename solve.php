@@ -8,7 +8,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use TravelMan\TravelMan;
-use TravelMan\TabFileCityInput;
+use TravelMan\IO\TabFileCityInput;
 use TravelMan\Algorithm\TSPAlgorithm;
 
 $start = microtime(true);

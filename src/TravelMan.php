@@ -10,6 +10,7 @@ namespace TravelMan;
 
 use TravelMan\Algorithm\AlgorithmInterface;
 use TravelMan\DTO\CityDTO;
+use TravelMan\IO\CityInputInterface;
 
 class TravelMan
 {

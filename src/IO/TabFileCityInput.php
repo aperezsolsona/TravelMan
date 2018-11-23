@@ -5,7 +5,7 @@
  * Date: 20/11/18
  * Time: 9:41
  */
-namespace TravelMan;
+namespace TravelMan\IO;
 
 use TravelMan\DTO\CityDTO;
 
@@ -27,7 +27,7 @@ class TabFileCityInput implements CityInputInterface
     {
         ini_set('auto_detect_line_endings',TRUE); //mac line issues
         if (!file_exists($file_name)) {
-            throw new \Exception("File not found");
+            throw new \Exception($file_name . " File not found");
         }
         $this->fp = fopen($file_name, "r");
         $this->delimiter = $delimiter;
