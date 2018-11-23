@@ -8,4 +8,4 @@
 
 ### Composer ###
 composer.phar
-/vendor/
+vendor
