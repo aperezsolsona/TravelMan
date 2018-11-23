@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" packagePrefix="TravelMan\Test\" />
       <excludeFolder url="file://$MODULE_DIR$/tsp-genetic-algorithm-master/src" />
       <excludeFolder url="file://$MODULE_DIR$/tsp-genetic-algorithm-master/tests" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/clue/graph" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />
