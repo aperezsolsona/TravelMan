@@ -30,8 +30,12 @@ https://en.wikipedia.org/wiki/Travelling_salesman_problem
 
 So I found an implementation of the algorithm in PHP here:
 http://www.srimax.com/index.php/travelling-salesman-problem-using-branch-bound-approach-php/
-I wrapped it in my algorithm interface, et voilà.
+I wrapped it in my algorithm interface, and the results are good and consistent. The only con I noticed, is that this algorithm is
+ optimized to come back to the first node, which is not one of the requirements of the original problem. This will yield not-optimal 
+ results for short test itineraries such as Beijing - Dakar - Tokyo - Vladivostok instead of an intuitive Beijing - Vladivostok - Tokyo - 
+ Dakar
 
 ### Other Considerations
-I also wrote an input interface for code simplicity and especially testability. With this interface, the input can be mocked 
+- Output: Although the original requirements stated that only the names of the cities should be outputted, I included the distance total in kms.
+- I also wrote an input interface (input folder) for code simplicity and especially testability. With this interface, the input can be mocked 
 with stubs and it does not depend on filesystem.
